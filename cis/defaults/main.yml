@@ -1,2 +1,12 @@
 ---
 # defaults file for cis
+
+cis_enable_rsyslog: true
+
+cis_skip_lock_users:
+  - root
+  - halt
+  - shutdown
+  - sync
+
+fail_on_manual_remediation_actions: false

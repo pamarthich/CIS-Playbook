@@ -1,0 +1,18 @@
+---
+- name: Create Seperate Partition for /tmp
+  debug: 
+     msg: "Manually Create Seperate Partition for /tmp"
+  tags:
+    - "1.1.2"
+
+- name: Create Seperate Partition for /var
+  debug:
+     msg: "Manually Create Seperate Partiton for /var"
+  tags:
+    - "1.16"
+
+- name: Create Seperate Partion for /var/log
+  debug:
+     msg: "Manually Create Seperate partition for /var/log"
+  tags:
+    - "1.1.11"

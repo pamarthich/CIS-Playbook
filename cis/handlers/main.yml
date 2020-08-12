@@ -5,3 +5,7 @@
   service:
     name: rsyslog
     state: restarted
+
+# handlers for grub password
+- name: grub-v2-update-config
+  command: "{{ grub_password_mkconfig }} -0 {{ grub_boot_path }}/grub.cfg"

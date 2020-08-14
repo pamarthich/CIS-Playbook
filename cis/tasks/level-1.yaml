@@ -60,6 +60,8 @@
     - iptables -A INPUT -i lo -j ACCEPT
     - iptables -A OUTPUT -o lo -j ACCEPT
     - iptables -A INPUT -s 127.0.0.0/8 -j DROP
+  tags:
+    - "3.6.3"
     #- name: 4.2.4 - Ensure permissions on logfiles are configured
     #  command: find -L /var/log -type f -exec chmod g-wx,o-rwx {} +
     #  tags:

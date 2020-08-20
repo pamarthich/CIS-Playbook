@@ -6,7 +6,10 @@
     name: "*"
     state: latest
     #security: yes
+    disablerepo: "epel"
   ignore_errors: True
+  tags:
+     - yum-update
 
 - name: 1.2.2 - Ensure GPG keys are configured
   shell: rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'
@@ -100,7 +103,10 @@
     #  lineinfile:
     #    path: /etc/ssh/sshd_config
     #    line: X11Forwarding no
-- include: sshd_config.yml
+- name: Check if /etc/ssh/sshd_config exists
+  stat:
+     path: /etc/ssh/sshd_config
+  register: sshd_config
   tags:
     - "5.2.4"
 

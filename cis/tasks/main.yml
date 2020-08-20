@@ -20,3 +20,8 @@
   tags:
     - grub-password
 
+#- include: partitions.yaml
+  tags:
+      - volume
+
+- include: 3.4.3-hosts.yaml 

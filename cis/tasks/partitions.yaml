@@ -4,15 +4,35 @@
      msg: "Manually Create Seperate Partition for /tmp"
   tags:
     - "1.1.2"
+- name: Create Volume 
+  ec2_vol:
+     aws_access_key: ""
+     aws_secret_key: ""
+     instance: "{{ item }}"
+     volume_size: "5"
+     device_name: /dev/xvdf
+     region: 'us-east-1' 
+     volume_type: gp2
+  register: ec2_vol
+  with_items:
+       - 3.81.117.60
+  tags: volume
 
-- name: Create Seperate Partition for /var
-  debug:
-     msg: "Manually Create Seperate Partiton for /var"
-  tags:
-    - "1.16"
+- name: Printing the volume information
+  debug: 
+      var: ec2_vol
 
-- name: Create Seperate Partion for /var/log
-  debug:
-     msg: "Manually Create Seperate partition for /var/log"
+- name: gathering ec instance information
+  ec2_instance_info:
+      aws_access_key: ""
+      aws_secret_key: ""
+      region: 'us-east-1'
+  register: ec2_instance_info
   tags:
-    - "1.1.11"
+    - info
+
+- name: printing the instance info
+  debug:
+     msg: "{{ ec2_instance_info.instances[0].instance_id}}"
+  tags:
+    - info
